@@ -3,7 +3,7 @@
 @section('title', 'Customers')
 
 @section('content')
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <form method="GET" class="d-flex flex-wrap gap-2 flex-grow-1" style="max-width: 560px">
             <label class="fw-search flex-grow-1">
                 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -24,9 +24,9 @@
         @endcan
     </div>
 
-    <div class="row g-3">
+    <div class="fw-grid gap-3">
         @forelse ($customers as $customer)
-            <div class="col-md-6 col-xl-4">
+            <div class="fw-span-md-6 fw-span-xl-4">
                 <a href="{{ route('customers.show', $customer) }}" class="fw-card fw-person-card h-100">
                     <div class="d-flex align-items-center gap-3">
                         <span class="fw-avatar" aria-hidden="true">{{ mb_strtoupper(mb_substr($customer->name, 0, 1)) }}</span>
@@ -69,7 +69,7 @@
                 </a>
             </div>
         @empty
-            <div class="col-12">
+            <div class="fw-span-12">
                 <div class="fw-card p-5 text-center text-secondary">
                     {{ request('q') ? 'No customers match “'.request('q').'”.' : 'No customers yet.' }}
                     @can('customers.manage')<a href="{{ route('customers.create') }}">Add a customer</a>.@endcan

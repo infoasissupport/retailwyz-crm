@@ -9,7 +9,7 @@
 @section('content')
     @php $canMark = auth()->user()->can('attendance.manage'); @endphp
 
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <form method="GET" class="d-flex flex-wrap align-items-center gap-2">
             <a href="{{ route('staff.attendance.index', ['date' => $date->copy()->subDay()->toDateString(), 'branch_id' => request('branch_id')]) }}" class="btn btn-sm btn-outline-secondary" aria-label="Previous day">‹</a>
             <input type="date" name="date" value="{{ $date->toDateString() }}" max="{{ today()->toDateString() }}" class="form-control form-control-sm" style="width: auto" onchange="this.form.submit()">

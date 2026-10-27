@@ -3,8 +3,8 @@
 @section('title', 'Financial transactions')
 
 @section('content')
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-2">
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-2">
             <select name="type" class="form-select" aria-label="Type">
                 <option value="">All types</option>
                 @foreach ($types as $type)
@@ -12,23 +12,23 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-md-2">
+        <div class="fw-span-md-2">
             <select name="account" class="form-select" aria-label="Account">
                 <option value="">All accounts</option>
                 <option value="cash" @selected(request('account') === 'cash')>Cash</option>
                 <option value="bank" @selected(request('account') === 'bank')>Bank</option>
             </select>
         </div>
-        <div class="col-md-2">
+        <div class="fw-span-md-2">
             <select name="direction" class="form-select" aria-label="Direction">
                 <option value="">In &amp; out</option>
                 <option value="in" @selected(request('direction') === 'in')>In</option>
                 <option value="out" @selected(request('direction') === 'out')>Out</option>
             </select>
         </div>
-        <div class="col-md-2"><input type="date" name="from" value="{{ request('from') }}" class="form-control" aria-label="From"></div>
-        <div class="col-md-2"><input type="date" name="to" value="{{ request('to') }}" class="form-control" aria-label="To"></div>
-        <div class="col-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
+        <div class="fw-span-md-2"><input type="date" name="from" value="{{ request('from') }}" class="form-control" aria-label="From"></div>
+        <div class="fw-span-md-2"><input type="date" name="to" value="{{ request('to') }}" class="form-control" aria-label="To"></div>
+        <div class="fw-span-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
     </form>
 
     <div class="table-responsive">

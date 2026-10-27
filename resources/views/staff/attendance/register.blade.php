@@ -3,7 +3,7 @@
 @section('title', 'Attendance register')
 
 @section('content')
-    <form method="GET" class="d-flex flex-wrap align-items-center gap-2 mb-3">
+    <form method="GET" class="d-flex flex-wrap align-items-center gap-2">
         <input type="month" name="month" value="{{ $month->format('Y-m') }}" max="{{ now()->format('Y-m') }}" class="form-control form-control-sm" style="width: auto">
         @if (auth()->user()->canAccessAllBranches())
             <select name="branch_id" class="form-select form-select-sm" style="width: auto">

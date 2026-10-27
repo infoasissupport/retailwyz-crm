@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="mb-3 small">
+        <div class="small">
             <strong>Bill to:</strong>
             @if ($sale->customer)
                 {{ $sale->customer->name }}<br>
@@ -64,8 +64,8 @@
             </tbody>
         </table>
 
-        <div class="row">
-            <div class="col-md-6">
+        <div class="fw-grid">
+            <div class="fw-span-md-6">
                 <h3 class="h6">Tax summary</h3>
                 <table class="table table-sm">
                     <thead><tr><th>Rate</th><th class="text-end">Taxable value</th><th class="text-end">Tax</th></tr></thead>
@@ -81,7 +81,7 @@
                 </table>
                 <p class="small text-muted">Prices are {{ $sale->prices_include_tax ? 'inclusive' : 'exclusive' }} of tax.</p>
             </div>
-            <div class="col-md-6">
+            <div class="fw-span-md-6">
                 <table class="table table-sm">
                     <tr><th>Subtotal</th><td class="text-end">{{ money($sale->subtotal) }}</td></tr>
                     <tr><th>Discount</th><td class="text-end">{{ money($sale->discount_total) }}</td></tr>

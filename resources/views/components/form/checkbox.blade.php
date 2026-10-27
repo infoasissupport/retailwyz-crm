@@ -6,7 +6,7 @@
     $key = str_replace(['[', ']'], ['.', ''], $name);
 @endphp
 
-<div class="form-check mb-3">
+<div class="form-check">
     <input type="hidden" name="{{ $name }}" value="0">
     <input type="checkbox" name="{{ $name }}" id="{{ $id }}" value="1"
            @checked(old($key, $checked))

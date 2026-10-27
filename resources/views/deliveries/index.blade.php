@@ -12,16 +12,16 @@
         $filters = ['' => 'All', 'pending' => 'Pending', 'out_for_delivery' => 'Out For Delivery', 'delivered' => 'Delivered', 'failed' => 'Failed', 'cancelled' => 'Cancelled'];
     @endphp
 
-    <div class="row g-3 mb-3">
+    <div class="fw-grid gap-3">
         @foreach ($tiles as $key => [$label, $tone])
-            <div class="col-6 col-lg-3">
+            <div class="fw-span-6 fw-span-lg-3">
                 <a href="{{ route('deliveries.index', ['status' => $key]) }}" class="fw-del-tile {{ $tone }}">
                     <span class="fw-del-tile-value">{{ $counts[$key] ?? 0 }}</span>
                     <span>{{ $label }}</span>
                 </a>
             </div>
         @endforeach
-        <div class="col-6 col-lg-3">
+        <div class="fw-span-6 fw-span-lg-3">
             <a href="{{ route('deliveries.index') }}" class="fw-del-tile">
                 <span class="fw-del-tile-value">{{ $counts->sum() }}</span>
                 <span>Total</span>
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <div class="d-flex flex-wrap gap-2">
             @foreach ($filters as $value => $label)
                 @continue($value === 'cancelled' && empty($counts['cancelled']))

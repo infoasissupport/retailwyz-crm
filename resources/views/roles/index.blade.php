@@ -3,12 +3,12 @@
 @section('title', 'Roles & permissions')
 
 @section('content')
-    <form method="POST" action="{{ route('roles.store') }}" class="row g-2 mb-4">
+    <form method="POST" action="{{ route('roles.store') }}" class="fw-grid gap-2 mb-4">
         @csrf
-        <div class="col-md-4">
+        <div class="fw-span-md-4">
             <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="New role name" required maxlength="100">
         </div>
-        <div class="col-md-2"><button type="submit" class="btn btn-primary w-100">Add role</button></div>
+        <div class="fw-span-md-2"><button type="submit" class="btn btn-primary w-100">Add role</button></div>
     </form>
 
     <div class="table-responsive">

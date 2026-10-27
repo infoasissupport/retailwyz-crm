@@ -11,12 +11,12 @@
     @csrf
     <input type="hidden" name="type" value="{{ $type }}">
 
-    <div class="row">
+    <div class="fw-grid">
         @if ($branches->isNotEmpty())
-            <div class="col-md-3"><x-form.select name="branch_id" label="Branch" :options="$branches" :value="auth()->user()->branch_id" /></div>
+            <div class="fw-span-md-3"><x-form.select name="branch_id" label="Branch" :options="$branches" :value="auth()->user()->branch_id" /></div>
         @endif
-        <div class="col-md-3"><x-form.input name="adjustment_date" label="Date" type="date" :value="now()->toDateString()" required /></div>
-        <div class="col-md-6"><x-form.input name="reason" label="Reason" required maxlength="255" /></div>
+        <div class="fw-span-md-3"><x-form.input name="adjustment_date" label="Date" type="date" :value="now()->toDateString()" required /></div>
+        <div class="fw-span-md-6"><x-form.input name="reason" label="Reason" required maxlength="255" /></div>
     </div>
 
     <table class="table table-sm">

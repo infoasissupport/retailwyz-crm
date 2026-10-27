@@ -3,9 +3,9 @@
 @section('title', 'Incentives')
 
 @section('content')
-    <div class="row g-3 mb-3">
+    <div class="fw-grid gap-3">
         @foreach (['pending' => 'Awaiting approval', 'approved' => 'Approved, unpaid', 'paid' => 'Paid'] as $status => $label)
-            <div class="col-sm-4">
+            <div class="fw-span-sm-4">
                 <a href="{{ route('staff.incentives.index', ['status' => $status]) }}" class="fw-card fw-tile">
                     <span class="fw-label">{{ $label }}</span>
                     <span class="fw-tile-value">{{ money($totals[$status]->total ?? 0) }}</span>
@@ -15,8 +15,8 @@
         @endforeach
     </div>
 
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-3">
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-3">
             <select name="status" class="form-select">
                 <option value="">All statuses</option>
                 @foreach ($statuses as $value => $label)
@@ -24,7 +24,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-md-4">
+        <div class="fw-span-md-4">
             <select name="employee_id" class="form-select">
                 <option value="">All employees</option>
                 @foreach ($employees as $id => $name)
@@ -32,11 +32,11 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-md-3"><input type="month" name="month" value="{{ request('month') }}" class="form-control"></div>
-        <div class="col-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
+        <div class="fw-span-md-3"><input type="month" name="month" value="{{ request('month') }}" class="form-control"></div>
+        <div class="fw-span-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
     </form>
 
-    <div class="fw-card mb-3">
+    <div class="fw-card">
         <div class="table-responsive">
             <table class="table fw-table align-middle mb-0">
                 <thead>
@@ -110,14 +110,14 @@
         </div>
     </div>
 
-    <div class="mb-3">{{ $incentives->links() }}</div>
+    <div>{{ $incentives->links() }}</div>
 
     @can('create', App\Models\Incentive::class)
         <section class="fw-card p-3" style="max-width: 960px">
-            <h2 class="fw-card-title mb-3">Raise an incentive</h2>
-            <form method="POST" action="{{ route('staff.incentives.store') }}" class="row g-2 align-items-end">
+            <h2 class="fw-card-title">Raise an incentive</h2>
+            <form method="POST" action="{{ route('staff.incentives.store') }}" class="fw-grid gap-2 align-items-end">
                 @csrf
-                <div class="col-md-4">
+                <div class="fw-span-md-4">
                     <label class="form-label small mb-1" for="inc-employee">Employee</label>
                     <select name="employee_id" id="inc-employee" class="form-select form-select-sm" required>
                         <option value="">Select…</option>
@@ -126,11 +126,11 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-2">
+                <div class="fw-span-md-2">
                     <label class="form-label small mb-1" for="inc-period">Month</label>
                     <input type="month" name="period" id="inc-period" value="{{ old('period', now()->format('Y-m')) }}" class="form-control form-control-sm" required>
                 </div>
-                <div class="col-md-3">
+                <div class="fw-span-md-3">
                     <label class="form-label small mb-1" for="inc-type">Type</label>
                     <select name="type" id="inc-type" class="form-select form-select-sm">
                         @foreach ($types as $value => $label)
@@ -138,14 +138,14 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="fw-span-md-3">
                     <label class="form-label small mb-1" for="inc-amount">Amount</label>
                     <input type="number" step="0.01" min="0.01" name="amount" id="inc-amount" value="{{ old('amount') }}" class="form-control form-control-sm" required>
                 </div>
-                <div class="col-md-9">
+                <div class="fw-span-md-9">
                     <input type="text" name="description" value="{{ old('description') }}" class="form-control form-control-sm" placeholder="Reason (optional)" maxlength="255">
                 </div>
-                <div class="col-md-3">
+                <div class="fw-span-md-3">
                     <button type="submit" class="btn btn-sm btn-primary w-100">Raise for approval</button>
                 </div>
             </form>

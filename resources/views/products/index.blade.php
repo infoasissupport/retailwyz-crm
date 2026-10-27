@@ -9,11 +9,11 @@
 @endsection
 
 @section('content')
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-4">
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-4">
             <input type="search" name="q" value="{{ request('q') }}" class="form-control" placeholder="Search name, SKU or barcode">
         </div>
-        <div class="col-md-3">
+        <div class="fw-span-md-3">
             <select name="category_id" class="form-select">
                 <option value="">All categories</option>
                 @foreach ($categories as $id => $name)
@@ -21,7 +21,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-md-3">
+        <div class="fw-span-md-3">
             <select name="brand_id" class="form-select">
                 <option value="">All brands</option>
                 @foreach ($brands as $id => $name)
@@ -29,7 +29,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-md-2">
+        <div class="fw-span-md-2">
             <button type="submit" class="btn btn-outline-secondary w-100">Filter</button>
         </div>
     </form>

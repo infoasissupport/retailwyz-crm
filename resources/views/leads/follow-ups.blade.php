@@ -13,7 +13,7 @@
         ];
     @endphp
 
-    <div class="d-flex flex-wrap justify-content-between gap-2 mb-3">
+    <div class="d-flex flex-wrap justify-content-between gap-2">
         <ul class="nav nav-pills gap-1">
             @foreach ($tabs as $key => [$label, $count])
                 <li class="nav-item">

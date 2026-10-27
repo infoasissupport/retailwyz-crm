@@ -7,16 +7,16 @@
     $rows = array_pad($rows, max(count($rows) + 3, 5), []);
 @endphp
 
-<div class="row">
+<div class="fw-grid">
     @if (! $purchase->exists && $branches->isNotEmpty())
-        <div class="col-md-3"><x-form.select name="branch_id" label="Branch" :options="$branches" :value="auth()->user()->branch_id" /></div>
+        <div class="fw-span-md-3"><x-form.select name="branch_id" label="Branch" :options="$branches" :value="auth()->user()->branch_id" /></div>
     @endif
-    <div class="col-md-3"><x-form.select name="supplier_id" label="Supplier" :options="$suppliers" :value="$purchase->supplier_id" placeholder="Select supplier" required /></div>
-    <div class="col-md-2"><x-form.input name="purchase_date" label="Purchase date" type="date" :value="$purchase->purchase_date?->toDateString()" required /></div>
-    <div class="col-md-2"><x-form.input name="expected_date" label="Expected date" type="date" :value="$purchase->expected_date?->toDateString()" /></div>
-    <div class="col-md-2"><x-form.input name="supplier_invoice_no" label="Supplier invoice no." :value="$purchase->supplier_invoice_no" maxlength="64" /></div>
-    <div class="col-md-2"><x-form.select name="status" label="Status" :options="$statuses" :value="$purchase->status ?? 'ordered'" required /></div>
-    <div class="col-md-2"><x-form.input name="shipping_cost" label="Shipping cost" type="number" step="0.01" min="0" :value="$purchase->shipping_cost" /></div>
+    <div class="fw-span-md-3"><x-form.select name="supplier_id" label="Supplier" :options="$suppliers" :value="$purchase->supplier_id" placeholder="Select supplier" required /></div>
+    <div class="fw-span-md-2"><x-form.input name="purchase_date" label="Purchase date" type="date" :value="$purchase->purchase_date?->toDateString()" required /></div>
+    <div class="fw-span-md-2"><x-form.input name="expected_date" label="Expected date" type="date" :value="$purchase->expected_date?->toDateString()" /></div>
+    <div class="fw-span-md-2"><x-form.input name="supplier_invoice_no" label="Supplier invoice no." :value="$purchase->supplier_invoice_no" maxlength="64" /></div>
+    <div class="fw-span-md-2"><x-form.select name="status" label="Status" :options="$statuses" :value="$purchase->status ?? 'ordered'" required /></div>
+    <div class="fw-span-md-2"><x-form.input name="shipping_cost" label="Shipping cost" type="number" step="0.01" min="0" :value="$purchase->shipping_cost" /></div>
 </div>
 
 <table class="table table-sm">

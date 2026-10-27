@@ -3,15 +3,15 @@
 @section('title', 'Payments')
 
 @section('content')
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-2">
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-2">
             <select name="direction" class="form-select">
                 <option value="">In &amp; out</option>
                 <option value="in" @selected(request('direction') === 'in')>Received</option>
                 <option value="out" @selected(request('direction') === 'out')>Paid</option>
             </select>
         </div>
-        <div class="col-md-2">
+        <div class="fw-span-md-2">
             <select name="method" class="form-select">
                 <option value="">All methods</option>
                 @foreach ($methods as $value => $label)
@@ -19,9 +19,9 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-md-3"><input type="date" name="from" value="{{ request('from') }}" class="form-control" aria-label="From"></div>
-        <div class="col-md-3"><input type="date" name="to" value="{{ request('to') }}" class="form-control" aria-label="To"></div>
-        <div class="col-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
+        <div class="fw-span-md-3"><input type="date" name="from" value="{{ request('from') }}" class="form-control" aria-label="From"></div>
+        <div class="fw-span-md-3"><input type="date" name="to" value="{{ request('to') }}" class="form-control" aria-label="To"></div>
+        <div class="fw-span-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
     </form>
 
     <div class="table-responsive">

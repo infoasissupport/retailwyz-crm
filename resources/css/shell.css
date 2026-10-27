@@ -295,7 +295,7 @@ body.fw-body {
     overscroll-behavior: contain;
 }
 .fw-content:focus { outline: none; }
-.fw-page { padding: 1.5rem 1.75rem 2rem; }
+.fw-page { padding: 10px; }
 
 .fw-breadcrumb { font-size: .8rem; margin-bottom: .35rem; }
 .fw-breadcrumb a { color: var(--fw-text-muted, #8a909c); text-decoration: none; }

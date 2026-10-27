@@ -16,40 +16,40 @@
 @endsection
 
 @section('content')
-<div class="row g-3">
-    <div class="col-lg-4">
+<div class="fw-grid gap-3">
+    <div class="fw-span-lg-4">
         <section class="fw-card p-3">
             <p class="fw-label mb-1">{{ $employee->employee_code }}</p>
             <p class="h5 mb-1">{{ $employee->name }}</p>
-            <p class="text-secondary small mb-3">{{ $employee->designation ?? 'No designation' }} · {{ $employee->branch->name }}</p>
+            <p class="text-secondary small">{{ $employee->designation ?? 'No designation' }} · {{ $employee->branch->name }}</p>
 
-            <dl class="row small mb-0">
-                <dt class="col-5 text-secondary fw-normal">Status</dt><dd class="col-7">{{ App\Models\Employee::STATUSES[$employee->status] ?? $employee->status }}</dd>
-                <dt class="col-5 text-secondary fw-normal">Phone</dt><dd class="col-7">@if ($employee->phone)<a href="tel:{{ $employee->phone }}">{{ $employee->phone }}</a>@else — @endif</dd>
-                <dt class="col-5 text-secondary fw-normal">Email</dt><dd class="col-7 text-break">{{ $employee->email ?? '—' }}</dd>
-                <dt class="col-5 text-secondary fw-normal">Joined</dt><dd class="col-7">{{ $employee->joining_date?->format('j M Y') ?? '—' }}</dd>
+            <dl class="fw-grid small mb-0">
+                <dt class="fw-span-5 text-secondary fw-normal">Status</dt><dd class="fw-span-7">{{ App\Models\Employee::STATUSES[$employee->status] ?? $employee->status }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Phone</dt><dd class="fw-span-7">@if ($employee->phone)<a href="tel:{{ $employee->phone }}">{{ $employee->phone }}</a>@else — @endif</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Email</dt><dd class="fw-span-7 text-break">{{ $employee->email ?? '—' }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Joined</dt><dd class="fw-span-7">{{ $employee->joining_date?->format('j M Y') ?? '—' }}</dd>
                 @can('staff.manage')
-                    <dt class="col-5 text-secondary fw-normal">Monthly salary</dt><dd class="col-7">{{ $employee->monthly_salary ? money($employee->monthly_salary) : '—' }}</dd>
+                    <dt class="fw-span-5 text-secondary fw-normal">Monthly salary</dt><dd class="fw-span-7">{{ $employee->monthly_salary ? money($employee->monthly_salary) : '—' }}</dd>
                 @endcan
-                <dt class="col-5 text-secondary fw-normal">Login</dt><dd class="col-7 text-break">{{ $employee->user?->email ?? 'Not linked' }}</dd>
-                <dt class="col-5 text-secondary fw-normal">Emergency</dt><dd class="col-7">{{ $employee->emergency_contact ?? '—' }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Login</dt><dd class="fw-span-7 text-break">{{ $employee->user?->email ?? 'Not linked' }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Emergency</dt><dd class="fw-span-7">{{ $employee->emergency_contact ?? '—' }}</dd>
                 @if ($employee->address)
-                    <dt class="col-5 text-secondary fw-normal">Address</dt><dd class="col-7">{{ $employee->address }}</dd>
+                    <dt class="fw-span-5 text-secondary fw-normal">Address</dt><dd class="fw-span-7">{{ $employee->address }}</dd>
                 @endif
             </dl>
         </section>
     </div>
 
-    <div class="col-lg-8">
-        <section class="fw-card p-3 mb-3">
-            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div class="fw-span-lg-8">
+        <section class="fw-card p-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
                 <h2 class="fw-card-title">Attendance · {{ $month->format('F Y') }}</h2>
                 <form method="GET" class="d-flex gap-2">
                     <input type="month" name="month" value="{{ $month->format('Y-m') }}" class="form-control form-control-sm" max="{{ now()->format('Y-m') }}">
                     <button type="submit" class="btn btn-sm btn-outline-secondary">Go</button>
                 </form>
             </div>
-            <div class="d-flex flex-wrap gap-2 mb-3">
+            <div class="d-flex flex-wrap gap-2">
                 <span class="fw-chip"><strong>{{ rtrim(rtrim(number_format($workedDays, 1), '0'), '.') }}</strong> working days</span>
                 @foreach ($summary as $label => $count)
                     <span class="fw-chip">{{ $label }}: {{ $count }}</span>
@@ -68,7 +68,7 @@
             </div>
         </section>
 
-        <section class="fw-card mb-3">
+        <section class="fw-card">
             <h2 class="fw-card-title p-3 pb-2">Targets</h2>
             <div class="table-responsive">
                 <table class="table fw-table mb-0">

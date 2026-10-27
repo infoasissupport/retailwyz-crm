@@ -5,8 +5,8 @@
 @section('content')
     <p>Total outstanding: <strong>{{ money($total) }}</strong></p>
 
-    <div class="row g-3">
-        <div class="col-lg-4">
+    <div class="fw-grid gap-3">
+        <div class="fw-span-lg-4">
             <h2 class="h6">By supplier</h2>
             <table class="table table-sm">
                 <thead><tr><th>Supplier</th><th class="text-end">Bills</th><th class="text-end">Balance</th></tr></thead>
@@ -20,7 +20,7 @@
             </table>
         </div>
 
-        <div class="col-lg-8">
+        <div class="fw-span-lg-8">
             <h2 class="h6">Open purchases</h2>
             <div class="table-responsive">
                 <table class="table table-sm">

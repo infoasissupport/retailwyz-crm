@@ -30,15 +30,11 @@
 
             <main id="main-content" class="fw-content" tabindex="-1">
                 <div class="fw-page">
-                    @include('layouts.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? []])
-
                     @hasSection('title')
                         <div class="fw-page-head">
                             <div class="min-w-0">
                                 <h1 class="fw-page-title">@yield('title')</h1>
-                                @hasSection('subtitle')
-                                    <p class="fw-page-subtitle">@yield('subtitle')</p>
-                                @endif
+                           
                             </div>
                             @hasSection('page-actions')
                                 <div class="fw-page-actions">@yield('page-actions')</div>

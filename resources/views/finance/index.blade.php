@@ -9,25 +9,25 @@
 @section('content')
     @include('reports.partials.period-filter')
 
-    <div class="row g-3 mb-4">
+    <div class="fw-grid gap-3 mb-4">
         @foreach ($accounts as $account => $totals)
-            <div class="col-md-4">
+            <div class="fw-span-md-4">
                 <div class="card"><div class="card-body">
                     <h2 class="h6 text-capitalize">{{ $account }}</h2>
-                    <dl class="row mb-0 small">
-                        <dt class="col-6">In</dt><dd class="col-6 text-end">{{ money($totals['in']) }}</dd>
-                        <dt class="col-6">Out</dt><dd class="col-6 text-end">{{ money($totals['out']) }}</dd>
-                        <dt class="col-6">Net</dt><dd class="col-6 text-end">{{ money($totals['net']) }}</dd>
+                    <dl class="fw-grid mb-0 small">
+                        <dt class="fw-span-6">In</dt><dd class="fw-span-6 text-end">{{ money($totals['in']) }}</dd>
+                        <dt class="fw-span-6">Out</dt><dd class="fw-span-6 text-end">{{ money($totals['out']) }}</dd>
+                        <dt class="fw-span-6">Net</dt><dd class="fw-span-6 text-end">{{ money($totals['net']) }}</dd>
                     </dl>
                 </div></div>
             </div>
         @endforeach
-        <div class="col-md-4">
+        <div class="fw-span-md-4">
             <div class="card"><div class="card-body">
                 <h2 class="h6">All accounts</h2>
-                <dl class="row mb-0 small">
-                    <dt class="col-6">In</dt><dd class="col-6 text-end">{{ money($totalIn) }}</dd>
-                    <dt class="col-6">Out</dt><dd class="col-6 text-end">{{ money($totalOut) }}</dd>
+                <dl class="fw-grid mb-0 small">
+                    <dt class="fw-span-6">In</dt><dd class="fw-span-6 text-end">{{ money($totalIn) }}</dd>
+                    <dt class="fw-span-6">Out</dt><dd class="fw-span-6 text-end">{{ money($totalOut) }}</dd>
                 </dl>
             </div></div>
         </div>

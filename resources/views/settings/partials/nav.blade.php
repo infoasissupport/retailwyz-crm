@@ -1,5 +1,5 @@
 {{-- Tabs shared by the settings screens. --}}
-<ul class="nav nav-tabs mb-3">
+<ul class="nav nav-tabs">
     @can('settings.manage')
         <li class="nav-item"><a href="{{ route('settings.general') }}" @class(['nav-link', 'active' => request()->routeIs('settings.general')])>General</a></li>
         <li class="nav-item"><a href="{{ route('settings.invoice') }}" @class(['nav-link', 'active' => request()->routeIs('settings.invoice')])>Invoice &amp; numbering</a></li>

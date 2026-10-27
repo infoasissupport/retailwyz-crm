@@ -18,12 +18,12 @@
         @csrf
         <input type="hidden" name="idempotency_key" value="{{ old('idempotency_key', $idempotencyKey) }}">
 
-        <div class="row">
+        <div class="fw-grid">
             @if ($branches->isNotEmpty())
-                <div class="col-md-3"><x-form.select name="branch_id" label="Branch" :options="$branches" :value="auth()->user()->branch_id" /></div>
+                <div class="fw-span-md-3"><x-form.select name="branch_id" label="Branch" :options="$branches" :value="auth()->user()->branch_id" /></div>
             @endif
-            <div class="col-md-4"><x-form.select name="customer_id" label="Customer" :options="$customers" placeholder="Walk-in customer" /></div>
-            <div class="col-md-3"><x-form.input name="sale_date" label="Date" type="date" :value="now()->toDateString()" required /></div>
+            <div class="fw-span-md-4"><x-form.select name="customer_id" label="Customer" :options="$customers" placeholder="Walk-in customer" /></div>
+            <div class="fw-span-md-3"><x-form.input name="sale_date" label="Date" type="date" :value="now()->toDateString()" required /></div>
         </div>
 
         <table class="table table-sm">
@@ -56,19 +56,19 @@
             </tbody>
         </table>
 
-        <fieldset class="mb-3">
+        <fieldset>
             <legend class="h6">Payment received</legend>
             @foreach ($paymentRows as $i => $payment)
-                <div class="row g-2 mb-2">
-                    <div class="col-md-3"><input type="number" step="0.01" min="0" name="payments[{{ $i }}][amount]" value="{{ $payment['amount'] ?? '' }}" class="form-control form-control-sm" placeholder="Amount"></div>
-                    <div class="col-md-3">
+                <div class="fw-grid gap-2 mb-2">
+                    <div class="fw-span-md-3"><input type="number" step="0.01" min="0" name="payments[{{ $i }}][amount]" value="{{ $payment['amount'] ?? '' }}" class="form-control form-control-sm" placeholder="Amount"></div>
+                    <div class="fw-span-md-3">
                         <select name="payments[{{ $i }}][method]" class="form-select form-select-sm">
                             @foreach ($paymentMethods as $value => $label)
                                 <option value="{{ $value }}" @selected(($payment['method'] ?? 'cash') === $value)>{{ $label }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-4"><input type="text" name="payments[{{ $i }}][reference]" value="{{ $payment['reference'] ?? '' }}" class="form-control form-control-sm" placeholder="Reference"></div>
+                    <div class="fw-span-md-4"><input type="text" name="payments[{{ $i }}][reference]" value="{{ $payment['reference'] ?? '' }}" class="form-control form-control-sm" placeholder="Reference"></div>
                 </div>
             @endforeach
         </fieldset>

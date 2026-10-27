@@ -14,22 +14,22 @@
 @endsection
 
 @section('content')
-    <div class="row g-3">
-        <div class="col-lg-5">
-            <dl class="row mb-0">
-                <dt class="col-sm-4">Code</dt><dd class="col-sm-8">{{ $supplier->code }}</dd>
-                <dt class="col-sm-4">Contact</dt><dd class="col-sm-8">{{ $supplier->contact_person ?? '—' }}</dd>
-                <dt class="col-sm-4">Phone</dt><dd class="col-sm-8">{{ $supplier->phone ?? '—' }}</dd>
-                <dt class="col-sm-4">Email</dt><dd class="col-sm-8">{{ $supplier->email ?? '—' }}</dd>
-                <dt class="col-sm-4">Tax number</dt><dd class="col-sm-8">{{ $supplier->tax_number ?? '—' }}</dd>
-                <dt class="col-sm-4">Address</dt><dd class="col-sm-8">{{ $supplier->address ?? '—' }}</dd>
-                <dt class="col-sm-4">Opening balance</dt><dd class="col-sm-8">{{ money($supplier->opening_balance) }}</dd>
-                <dt class="col-sm-4">Payable</dt><dd class="col-sm-8">{{ money($payable) }}</dd>
-                <dt class="col-sm-4">Active</dt><dd class="col-sm-8">{{ $supplier->is_active ? 'Yes' : 'No' }}</dd>
+    <div class="fw-grid gap-3">
+        <div class="fw-span-lg-5">
+            <dl class="fw-grid mb-0">
+                <dt class="fw-span-sm-4">Code</dt><dd class="fw-span-sm-8">{{ $supplier->code }}</dd>
+                <dt class="fw-span-sm-4">Contact</dt><dd class="fw-span-sm-8">{{ $supplier->contact_person ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Phone</dt><dd class="fw-span-sm-8">{{ $supplier->phone ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Email</dt><dd class="fw-span-sm-8">{{ $supplier->email ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Tax number</dt><dd class="fw-span-sm-8">{{ $supplier->tax_number ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Address</dt><dd class="fw-span-sm-8">{{ $supplier->address ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Opening balance</dt><dd class="fw-span-sm-8">{{ money($supplier->opening_balance) }}</dd>
+                <dt class="fw-span-sm-4">Payable</dt><dd class="fw-span-sm-8">{{ money($payable) }}</dd>
+                <dt class="fw-span-sm-4">Active</dt><dd class="fw-span-sm-8">{{ $supplier->is_active ? 'Yes' : 'No' }}</dd>
             </dl>
         </div>
 
-        <div class="col-lg-7">
+        <div class="fw-span-lg-7">
             <h2 class="h6">Recent purchases</h2>
             <div class="table-responsive">
                 <table class="table table-sm">

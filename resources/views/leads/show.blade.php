@@ -24,10 +24,10 @@
 @endsection
 
 @section('content')
-<div class="row g-3">
-    <div class="col-lg-4">
-        <section class="fw-card p-3 mb-3">
-            <div class="d-flex justify-content-between align-items-start mb-3">
+<div class="fw-grid gap-3">
+    <div class="fw-span-lg-4">
+        <section class="fw-card p-3">
+            <div class="d-flex justify-content-between align-items-start">
                 @include('leads.partials.status-badge', ['status' => $lead->status])
                 <span class="small text-secondary">#{{ $lead->id }}</span>
             </div>
@@ -39,22 +39,22 @@
                 </div>
             @endif
 
-            <dl class="row small mb-0">
-                <dt class="col-5 text-secondary fw-normal">Phone</dt>
-                <dd class="col-7">@if ($lead->phone)<a href="tel:{{ $lead->phone }}">{{ $lead->phone }}</a>@else — @endif</dd>
-                <dt class="col-5 text-secondary fw-normal">Email</dt>
-                <dd class="col-7 text-break">@if ($lead->email)<a href="mailto:{{ $lead->email }}">{{ $lead->email }}</a>@else — @endif</dd>
-                <dt class="col-5 text-secondary fw-normal">Company</dt><dd class="col-7">{{ $lead->company ?? '—' }}</dd>
-                <dt class="col-5 text-secondary fw-normal">Source</dt><dd class="col-7">{{ $lead->source->label() }}</dd>
-                <dt class="col-5 text-secondary fw-normal">Interested in</dt><dd class="col-7">{{ $lead->category?->name ?? '—' }}</dd>
-                <dt class="col-5 text-secondary fw-normal">Expected value</dt><dd class="col-7">{{ $lead->expected_value ? money($lead->expected_value) : '—' }}</dd>
-                <dt class="col-5 text-secondary fw-normal">Assigned to</dt><dd class="col-7">{{ $lead->assignee?->name ?? 'Unassigned' }}</dd>
-                <dt class="col-5 text-secondary fw-normal">Created</dt><dd class="col-7">{{ $lead->created_at->format('j M Y') }} by {{ $lead->creator?->name ?? '—' }}</dd>
+            <dl class="fw-grid small mb-0">
+                <dt class="fw-span-5 text-secondary fw-normal">Phone</dt>
+                <dd class="fw-span-7">@if ($lead->phone)<a href="tel:{{ $lead->phone }}">{{ $lead->phone }}</a>@else — @endif</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Email</dt>
+                <dd class="fw-span-7 text-break">@if ($lead->email)<a href="mailto:{{ $lead->email }}">{{ $lead->email }}</a>@else — @endif</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Company</dt><dd class="fw-span-7">{{ $lead->company ?? '—' }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Source</dt><dd class="fw-span-7">{{ $lead->source->label() }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Interested in</dt><dd class="fw-span-7">{{ $lead->category?->name ?? '—' }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Expected value</dt><dd class="fw-span-7">{{ $lead->expected_value ? money($lead->expected_value) : '—' }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Assigned to</dt><dd class="fw-span-7">{{ $lead->assignee?->name ?? 'Unassigned' }}</dd>
+                <dt class="fw-span-5 text-secondary fw-normal">Created</dt><dd class="fw-span-7">{{ $lead->created_at->format('j M Y') }} by {{ $lead->creator?->name ?? '—' }}</dd>
                 @if ($lead->lost_reason)
-                    <dt class="col-5 text-secondary fw-normal">Lost reason</dt><dd class="col-7">{{ $lead->lost_reason }}</dd>
+                    <dt class="fw-span-5 text-secondary fw-normal">Lost reason</dt><dd class="fw-span-7">{{ $lead->lost_reason }}</dd>
                 @endif
                 @if ($lead->address)
-                    <dt class="col-5 text-secondary fw-normal">Address</dt><dd class="col-7">{{ $lead->address }}</dd>
+                    <dt class="fw-span-5 text-secondary fw-normal">Address</dt><dd class="fw-span-7">{{ $lead->address }}</dd>
                 @endif
             </dl>
         </section>
@@ -63,7 +63,7 @@
             <section class="fw-card p-3">
                 @if ($lead->requirement)
                     <h2 class="fw-card-title mb-1">Requirement</h2>
-                    <p class="small mb-3" style="white-space: pre-line">{{ $lead->requirement }}</p>
+                    <p class="small" style="white-space: pre-line">{{ $lead->requirement }}</p>
                 @endif
                 @if ($lead->notes)
                     <h2 class="fw-card-title mb-1">Notes</h2>
@@ -73,14 +73,14 @@
         @endif
     </div>
 
-    <div class="col-lg-8">
+    <div class="fw-span-lg-8">
         @can('update', $lead)
             @if ($lead->status->isOpen())
-                <section class="fw-card p-3 mb-3">
-                    <h2 class="fw-card-title mb-3">Schedule a follow-up</h2>
-                    <form method="POST" action="{{ route('leads.follow-ups.store', $lead) }}" class="row g-2 align-items-end">
+                <section class="fw-card p-3">
+                    <h2 class="fw-card-title">Schedule a follow-up</h2>
+                    <form method="POST" action="{{ route('leads.follow-ups.store', $lead) }}" class="fw-grid gap-2 align-items-end">
                         @csrf
-                        <div class="col-sm-4">
+                        <div class="fw-span-sm-4">
                             <label class="form-label small mb-1" for="fu-type">Type</label>
                             <select name="type" id="fu-type" class="form-select form-select-sm">
                                 @foreach ($followUpTypes as $value => $label)
@@ -88,11 +88,11 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="fw-span-sm-4">
                             <label class="form-label small mb-1" for="fu-when">When</label>
                             <input type="datetime-local" name="scheduled_at" id="fu-when" value="{{ old('scheduled_at') }}" class="form-control form-control-sm" required>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="fw-span-sm-4">
                             <label class="form-label small mb-1" for="fu-assignee">Assign to</label>
                             <select name="assigned_to" id="fu-assignee" class="form-select form-select-sm">
                                 @foreach ($staff as $id => $name)
@@ -100,10 +100,10 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="fw-span-sm-9">
                             <input type="text" name="notes" value="{{ old('notes') }}" class="form-control form-control-sm" placeholder="Note (optional)" maxlength="2000">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="fw-span-sm-3">
                             <button type="submit" class="btn btn-sm btn-primary w-100">Schedule</button>
                         </div>
                     </form>
@@ -112,7 +112,7 @@
         @endcan
 
         <section class="fw-card p-3">
-            <h2 class="fw-card-title mb-3">Follow-up history</h2>
+            <h2 class="fw-card-title">Follow-up history</h2>
             <ol class="fw-timeline list-unstyled mb-0">
                 @forelse ($lead->followUps as $followUp)
                     <li @class(['fw-timeline-item', 'is-pending' => $followUp->isPending(), 'is-overdue' => $followUp->isOverdue()])>

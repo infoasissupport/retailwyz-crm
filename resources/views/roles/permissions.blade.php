@@ -11,9 +11,9 @@
         @csrf
         @method('PUT')
 
-        <div class="row g-3">
+        <div class="fw-grid gap-3">
             @foreach ($modules as $module => $permissions)
-                <div class="col-md-6 col-xl-4">
+                <div class="fw-span-md-6 fw-span-xl-4">
                     <fieldset class="border rounded p-3 h-100">
                         <legend class="h6 float-none w-auto px-1 mb-2">{{ $module }}</legend>
                         @foreach ($permissions as $permission)

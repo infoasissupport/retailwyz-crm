@@ -40,9 +40,9 @@
 
     {{-- KPI tiles --}}
     @if ($kpis)
-        <div class="row g-3 mb-3">
+        <div class="fw-grid gap-3">
             @foreach ($kpis as $kpi)
-                <div class="col-sm-6 col-xl-3">
+                <div class="fw-span-sm-6 fw-span-xl-3">
                     <a href="{{ $kpi['url'] }}" class="fw-kpi tone-{{ $kpi['tone'] }}">
                         <span class="fw-kpi-icon" aria-hidden="true"><i class="bi {{ $kpi['icon'] }}"></i></span>
                         <span class="fw-kpi-body">
@@ -69,10 +69,10 @@
         </div>
     @endif
 
-    <div class="row g-3">
+    <div class="fw-grid gap-3">
         {{-- Recent leads --}}
         @isset($recentLeads)
-            <div class="{{ isset($todaysDeliveries) ? 'col-xl-7' : 'col-12' }}">
+            <div class="{{ isset($todaysDeliveries) ? 'fw-span-xl-7' : 'fw-span-12' }}">
                 <section class="fw-card fw-panel h-100" aria-labelledby="leads-title">
                     <div class="fw-panel-head">
                         <h2 id="leads-title" class="fw-panel-title"><i class="bi bi-person-lines-fill text-primary-emphasis" aria-hidden="true"></i> Recent Leads</h2>
@@ -113,7 +113,7 @@
 
         {{-- Today's deliveries --}}
         @isset($todaysDeliveries)
-            <div class="{{ isset($recentLeads) ? 'col-xl-5' : 'col-12' }}">
+            <div class="{{ isset($recentLeads) ? 'fw-span-xl-5' : 'fw-span-12' }}">
                 <section class="fw-card fw-panel h-100" aria-labelledby="del-title">
                     <div class="fw-panel-head">
                         <h2 id="del-title" class="fw-panel-title"><i class="bi bi-truck text-info-emphasis" aria-hidden="true"></i> Today's Deliveries</h2>
@@ -147,7 +147,7 @@
 
         {{-- Active orders --}}
         @isset($activeOrders)
-            <div class="{{ isset($lowStock) ? 'col-xl-6' : 'col-12' }}">
+            <div class="{{ isset($lowStock) ? 'fw-span-xl-6' : 'fw-span-12' }}">
                 <section class="fw-card fw-panel h-100" aria-labelledby="orders-title">
                     <div class="fw-panel-head">
                         <h2 id="orders-title" class="fw-panel-title"><i class="bi bi-cart3 text-danger-emphasis" aria-hidden="true"></i> Active Orders</h2>
@@ -184,7 +184,7 @@
 
         {{-- Low stock alerts --}}
         @isset($lowStock)
-            <div class="{{ isset($activeOrders) ? 'col-xl-6' : 'col-12' }}">
+            <div class="{{ isset($activeOrders) ? 'fw-span-xl-6' : 'fw-span-12' }}">
                 <section class="fw-card fw-panel h-100" aria-labelledby="stock-title">
                     <div class="fw-panel-head">
                         <h2 id="stock-title" class="fw-panel-title"><i class="bi bi-exclamation-triangle-fill text-warning" aria-hidden="true"></i> Low Stock Alerts</h2>

@@ -14,22 +14,22 @@
 @endsection
 
 @section('content')
-    <div class="row g-3">
-        <div class="col-lg-5">
-            <dl class="row mb-0">
-                <dt class="col-sm-4">Code</dt><dd class="col-sm-8">{{ $customer->code }}</dd>
-                <dt class="col-sm-4">Phone</dt><dd class="col-sm-8">{{ $customer->phone ?? '—' }}</dd>
-                <dt class="col-sm-4">Email</dt><dd class="col-sm-8">{{ $customer->email ?? '—' }}</dd>
-                <dt class="col-sm-4">Tax number</dt><dd class="col-sm-8">{{ $customer->tax_number ?? '—' }}</dd>
-                <dt class="col-sm-4">Address</dt><dd class="col-sm-8">{{ $customer->address ?? '—' }}</dd>
-                <dt class="col-sm-4">Opening balance</dt><dd class="col-sm-8">{{ money($customer->opening_balance) }}</dd>
-                <dt class="col-sm-4">Credit limit</dt><dd class="col-sm-8">{{ $customer->credit_limit !== null ? money($customer->credit_limit) : '—' }}</dd>
-                <dt class="col-sm-4">Outstanding</dt><dd class="col-sm-8">{{ money($outstanding) }}</dd>
-                <dt class="col-sm-4">Active</dt><dd class="col-sm-8">{{ $customer->is_active ? 'Yes' : 'No' }}</dd>
+    <div class="fw-grid gap-3">
+        <div class="fw-span-lg-5">
+            <dl class="fw-grid mb-0">
+                <dt class="fw-span-sm-4">Code</dt><dd class="fw-span-sm-8">{{ $customer->code }}</dd>
+                <dt class="fw-span-sm-4">Phone</dt><dd class="fw-span-sm-8">{{ $customer->phone ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Email</dt><dd class="fw-span-sm-8">{{ $customer->email ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Tax number</dt><dd class="fw-span-sm-8">{{ $customer->tax_number ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Address</dt><dd class="fw-span-sm-8">{{ $customer->address ?? '—' }}</dd>
+                <dt class="fw-span-sm-4">Opening balance</dt><dd class="fw-span-sm-8">{{ money($customer->opening_balance) }}</dd>
+                <dt class="fw-span-sm-4">Credit limit</dt><dd class="fw-span-sm-8">{{ $customer->credit_limit !== null ? money($customer->credit_limit) : '—' }}</dd>
+                <dt class="fw-span-sm-4">Outstanding</dt><dd class="fw-span-sm-8">{{ money($outstanding) }}</dd>
+                <dt class="fw-span-sm-4">Active</dt><dd class="fw-span-sm-8">{{ $customer->is_active ? 'Yes' : 'No' }}</dd>
             </dl>
         </div>
 
-        <div class="col-lg-7">
+        <div class="fw-span-lg-7">
             <h2 class="h6">Recent sales</h2>
             <div class="table-responsive">
                 <table class="table table-sm">

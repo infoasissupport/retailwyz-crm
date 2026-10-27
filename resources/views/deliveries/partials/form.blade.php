@@ -8,13 +8,13 @@
     </div>
 @endif
 
-<div class="fw-card p-3 p-md-4 mb-3">
-    <h2 class="fw-card-title mb-3">Deliver to</h2>
-    <div class="row">
+<div class="fw-card p-3 p-md-4">
+    <h2 class="fw-card-title">Deliver to</h2>
+    <div class="fw-grid">
         @if (! $delivery->exists && ! $sale)
-            <div class="col-12">
+            <div class="fw-span-12">
                 <label for="customer_id" class="form-label">Existing customer <span class="text-secondary small">(optional, fills the details below)</span></label>
-                <select name="customer_id" id="customer_id" class="form-select mb-3" data-fw-customer-fill>
+                <select name="customer_id" id="customer_id" class="form-select" data-fw-customer-fill>
                     <option value="">New / walk-in customer</option>
                     @foreach ($customers as $customer)
                         <option value="{{ $customer->id }}" data-name="{{ $customer->name }}" data-phone="{{ $customer->phone }}" data-address="{{ $customer->address }}"
@@ -23,26 +23,26 @@
                 </select>
             </div>
         @endif
-        <div class="col-md-6"><x-form.input name="customer_name" label="Customer name" :value="$delivery->customer_name" required maxlength="255" /></div>
-        <div class="col-md-6"><x-form.input name="phone" label="Phone" type="tel" :value="$delivery->phone" required maxlength="30" /></div>
-        <div class="col-12"><x-form.textarea name="address" label="Delivery address" :value="$delivery->address" rows="2" required /></div>
-        <div class="col-md-4"><x-form.input name="scheduled_date" label="Delivery date" type="date" :value="$delivery->scheduled_date?->toDateString()" :min="today()->toDateString()" required /></div>
-        <div class="col-md-4"><x-form.input name="time_slot" label="Time slot" :value="$delivery->time_slot" maxlength="50" placeholder="e.g. 10 AM – 1 PM" /></div>
+        <div class="fw-span-md-6"><x-form.input name="customer_name" label="Customer name" :value="$delivery->customer_name" required maxlength="255" /></div>
+        <div class="fw-span-md-6"><x-form.input name="phone" label="Phone" type="tel" :value="$delivery->phone" required maxlength="30" /></div>
+        <div class="fw-span-12"><x-form.textarea name="address" label="Delivery address" :value="$delivery->address" rows="2" required /></div>
+        <div class="fw-span-md-4"><x-form.input name="scheduled_date" label="Delivery date" type="date" :value="$delivery->scheduled_date?->toDateString()" :min="today()->toDateString()" required /></div>
+        <div class="fw-span-md-4"><x-form.input name="time_slot" label="Time slot" :value="$delivery->time_slot" maxlength="50" placeholder="e.g. 10 AM – 1 PM" /></div>
         @unless ($sale)
-            <div class="col-md-4"><x-form.input name="order_value" label="Order value" type="number" step="0.01" min="0" :value="$delivery->order_value" /></div>
+            <div class="fw-span-md-4"><x-form.input name="order_value" label="Order value" type="number" step="0.01" min="0" :value="$delivery->order_value" /></div>
         @endunless
-        <div class="col-md-4"><x-form.input name="delivery_charge" label="Delivery charge" type="number" step="0.01" min="0" :value="$delivery->delivery_charge" /></div>
+        <div class="fw-span-md-4"><x-form.input name="delivery_charge" label="Delivery charge" type="number" step="0.01" min="0" :value="$delivery->delivery_charge" /></div>
     </div>
 </div>
 
-<div class="fw-card p-3 p-md-4 mb-3">
-    <h2 class="fw-card-title mb-3">Driver &amp; vehicle</h2>
-    <div class="row">
-        <div class="col-md-6"><x-form.select name="employee_id" label="Driver from staff" :options="$drivers" :value="$delivery->employee_id" placeholder="Not from staff / enter below" /></div>
-        <div class="col-md-6"><x-form.input name="driver_name" label="Driver name" :value="$delivery->driver_name" maxlength="255" help="Filled automatically when a staff driver is chosen." /></div>
-        <div class="col-md-6"><x-form.input name="driver_phone" label="Driver phone" type="tel" :value="$delivery->driver_phone" maxlength="30" /></div>
-        <div class="col-md-6"><x-form.input name="vehicle_no" label="Vehicle number" :value="$delivery->vehicle_no" maxlength="30" placeholder="e.g. MH-04-AB-1234" /></div>
-        <div class="col-12"><x-form.textarea name="notes" label="Instructions" :value="$delivery->notes" rows="2" placeholder="e.g. Call before arriving, 3rd floor, no lift" /></div>
+<div class="fw-card p-3 p-md-4">
+    <h2 class="fw-card-title">Driver &amp; vehicle</h2>
+    <div class="fw-grid">
+        <div class="fw-span-md-6"><x-form.select name="employee_id" label="Driver from staff" :options="$drivers" :value="$delivery->employee_id" placeholder="Not from staff / enter below" /></div>
+        <div class="fw-span-md-6"><x-form.input name="driver_name" label="Driver name" :value="$delivery->driver_name" maxlength="255" help="Filled automatically when a staff driver is chosen." /></div>
+        <div class="fw-span-md-6"><x-form.input name="driver_phone" label="Driver phone" type="tel" :value="$delivery->driver_phone" maxlength="30" /></div>
+        <div class="fw-span-md-6"><x-form.input name="vehicle_no" label="Vehicle number" :value="$delivery->vehicle_no" maxlength="30" placeholder="e.g. MH-04-AB-1234" /></div>
+        <div class="fw-span-12"><x-form.textarea name="notes" label="Instructions" :value="$delivery->notes" rows="2" placeholder="e.g. Call before arriving, 3rd floor, no lift" /></div>
     </div>
 </div>
 

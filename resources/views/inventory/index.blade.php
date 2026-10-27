@@ -3,12 +3,12 @@
 @section('title', 'Stock levels')
 
 @section('content')
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-4">
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-4">
             <input type="search" name="q" value="{{ request('q') }}" class="form-control" placeholder="Search product name, SKU or barcode">
         </div>
         @if ($branches->isNotEmpty())
-            <div class="col-md-3">
+            <div class="fw-span-md-3">
                 <select name="branch_id" class="form-select">
                     <option value="">All branches</option>
                     @foreach ($branches as $id => $name)
@@ -17,11 +17,11 @@
                 </select>
             </div>
         @endif
-        <div class="col-md-2 form-check pt-2 ms-2">
+        <div class="fw-span-md-2 form-check pt-2 ms-2">
             <input type="checkbox" name="low_stock" value="1" id="low_stock" class="form-check-input" @checked(request('low_stock'))>
             <label for="low_stock" class="form-check-label">Low stock only</label>
         </div>
-        <div class="col-md-2">
+        <div class="fw-span-md-2">
             <button type="submit" class="btn btn-outline-secondary w-100">Filter</button>
         </div>
     </form>

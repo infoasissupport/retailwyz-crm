@@ -17,20 +17,20 @@
         $totalAchieved = array_sum(array_map('floatval', $achieved));
     @endphp
 
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <form method="GET" class="d-flex gap-2">
             <input type="month" name="month" value="{{ $month->format('Y-m') }}" class="form-control form-control-sm" style="width: auto" onchange="this.form.submit()">
         </form>
         <p class="small text-secondary mb-0">Achievement counts completed sales billed by the employee’s linked login, net of returns.</p>
     </div>
 
-    <div class="row g-3 mb-3">
-        <div class="col-sm-4"><div class="fw-card fw-tile"><span class="fw-label">Team target</span><span class="fw-tile-value">{{ money($totalTarget) }}</span><span class="fw-tile-meta">{{ $targets->count() }} employees</span></div></div>
-        <div class="col-sm-4"><div class="fw-card fw-tile"><span class="fw-label">Achieved</span><span class="fw-tile-value">{{ money($totalAchieved) }}</span><span class="fw-tile-meta">{{ $totalTarget > 0 ? round($totalAchieved / $totalTarget * 100) : 0 }}% of target</span></div></div>
-        <div class="col-sm-4"><div class="fw-card fw-tile"><span class="fw-label">Targets met</span><span class="fw-tile-value">{{ $targets->filter(fn ($t) => (float) $achieved[$t->id] >= (float) $t->target_amount)->count() }}</span><span class="fw-tile-meta">of {{ $targets->count() }}</span></div></div>
+    <div class="fw-grid gap-3">
+        <div class="fw-span-sm-4"><div class="fw-card fw-tile"><span class="fw-label">Team target</span><span class="fw-tile-value">{{ money($totalTarget) }}</span><span class="fw-tile-meta">{{ $targets->count() }} employees</span></div></div>
+        <div class="fw-span-sm-4"><div class="fw-card fw-tile"><span class="fw-label">Achieved</span><span class="fw-tile-value">{{ money($totalAchieved) }}</span><span class="fw-tile-meta">{{ $totalTarget > 0 ? round($totalAchieved / $totalTarget * 100) : 0 }}% of target</span></div></div>
+        <div class="fw-span-sm-4"><div class="fw-card fw-tile"><span class="fw-label">Targets met</span><span class="fw-tile-value">{{ $targets->filter(fn ($t) => (float) $achieved[$t->id] >= (float) $t->target_amount)->count() }}</span><span class="fw-tile-meta">of {{ $targets->count() }}</span></div></div>
     </div>
 
-    <div class="fw-card mb-3">
+    <div class="fw-card">
         <div class="table-responsive">
             <table class="table fw-table align-middle mb-0">
                 <thead>
@@ -103,12 +103,12 @@
     @can('targets.manage')
         @if ($employees->isNotEmpty())
             <section class="fw-card p-3" style="max-width: 960px">
-                <h2 class="fw-card-title mb-3">Set a target for {{ $month->format('F Y') }}</h2>
+                <h2 class="fw-card-title">Set a target for {{ $month->format('F Y') }}</h2>
                 <form method="POST" action="{{ route('staff.targets.store') }}">
                     @csrf
                     <input type="hidden" name="month" value="{{ $month->format('Y-m') }}">
-                    <div class="row g-2">
-                        <div class="col-md-4">
+                    <div class="fw-grid gap-2">
+                        <div class="fw-span-md-4">
                             <label class="form-label small mb-1" for="new-employee">Employee</label>
                             <select name="employee_id" id="new-employee" class="form-select form-select-sm" required>
                                 <option value="">Select…</option>
@@ -117,7 +117,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-8">
+                        <div class="fw-span-md-8">
                             @include('staff.targets.partials.rule-fields', ['target' => null, 'idPrefix' => 'new'])
                         </div>
                     </div>

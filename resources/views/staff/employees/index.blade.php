@@ -9,11 +9,11 @@
 @endsection
 
 @section('content')
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-6">
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-6">
             <input type="search" name="q" value="{{ request('q') }}" class="form-control" placeholder="Search name, code, phone or designation">
         </div>
-        <div class="col-md-3">
+        <div class="fw-span-md-3">
             <select name="status" class="form-select">
                 <option value="">Active &amp; inactive</option>
                 @foreach ($statuses as $value => $label)
@@ -21,7 +21,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-md-3"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
+        <div class="fw-span-md-3"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
     </form>
 
     <div class="fw-card">

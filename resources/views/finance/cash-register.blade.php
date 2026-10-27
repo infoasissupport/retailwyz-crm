@@ -6,28 +6,28 @@
     @if ($current)
         <div class="card mb-4"><div class="card-body">
             <h2 class="h6">Open register</h2>
-            <dl class="row small">
-                <dt class="col-sm-3">Opened</dt><dd class="col-sm-9">{{ $current->opened_at->format('d-m-Y H:i') }}</dd>
-                <dt class="col-sm-3">Opening float</dt><dd class="col-sm-9">{{ money($current->opening_balance) }}</dd>
-                <dt class="col-sm-3">Expected cash now</dt><dd class="col-sm-9">{{ money($expected) }}</dd>
+            <dl class="fw-grid small">
+                <dt class="fw-span-sm-3">Opened</dt><dd class="fw-span-sm-9">{{ $current->opened_at->format('d-m-Y H:i') }}</dd>
+                <dt class="fw-span-sm-3">Opening float</dt><dd class="fw-span-sm-9">{{ money($current->opening_balance) }}</dd>
+                <dt class="fw-span-sm-3">Expected cash now</dt><dd class="fw-span-sm-9">{{ money($expected) }}</dd>
             </dl>
 
             @can('close', $current)
-                <form method="POST" action="{{ route('finance.cash-register.close', $current) }}" class="row g-2 align-items-end">
+                <form method="POST" action="{{ route('finance.cash-register.close', $current) }}" class="fw-grid gap-2 align-items-end">
                     @csrf
-                    <div class="col-md-4"><x-form.input name="closing_balance" label="Counted cash" type="number" step="0.01" min="0" required /></div>
-                    <div class="col-md-6"><x-form.input name="notes" label="Notes" maxlength="1000" /></div>
-                    <div class="col-md-2 mb-3"><button type="submit" class="btn btn-warning w-100" data-confirm="Close this register?">Close</button></div>
+                    <div class="fw-span-md-4"><x-form.input name="closing_balance" label="Counted cash" type="number" step="0.01" min="0" required /></div>
+                    <div class="fw-span-md-6"><x-form.input name="notes" label="Notes" maxlength="1000" /></div>
+                    <div class="fw-span-md-2"><button type="submit" class="btn btn-warning w-100" data-confirm="Close this register?">Close</button></div>
                 </form>
             @endcan
         </div></div>
     @else
         @can('open', \App\Models\CashRegister::class)
-            <form method="POST" action="{{ route('finance.cash-register.open') }}" class="row g-2 align-items-end mb-4">
+            <form method="POST" action="{{ route('finance.cash-register.open') }}" class="fw-grid gap-2 align-items-end mb-4">
                 @csrf
-                <div class="col-md-4"><x-form.input name="opening_balance" label="Opening float" type="number" step="0.01" min="0" value="0" required /></div>
-                <div class="col-md-6"><x-form.input name="notes" label="Notes" maxlength="1000" /></div>
-                <div class="col-md-2 mb-3"><button type="submit" class="btn btn-primary w-100">Open register</button></div>
+                <div class="fw-span-md-4"><x-form.input name="opening_balance" label="Opening float" type="number" step="0.01" min="0" value="0" required /></div>
+                <div class="fw-span-md-6"><x-form.input name="notes" label="Notes" maxlength="1000" /></div>
+                <div class="fw-span-md-2"><button type="submit" class="btn btn-primary w-100">Open register</button></div>
             </form>
         @endcan
     @endif

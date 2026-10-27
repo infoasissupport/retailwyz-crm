@@ -11,10 +11,10 @@
 @endsection
 
 @section('content')
-<div class="row g-3" style="max-width: 1100px">
-    <div class="col-lg-7">
+<div class="fw-grid gap-3" style="max-width: 1100px">
+    <div class="fw-span-lg-7">
         <section class="fw-card p-3 p-md-4">
-            <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-start gap-2">
                 <div>
                     <p class="fw-label mb-1">{{ $delivery->delivery_no }}</p>
                     <p class="h5 mb-1">{{ $delivery->customer_name }}</p>
@@ -29,20 +29,20 @@
                 </div>
             </div>
 
-            <dl class="row small mb-0">
-                <dt class="col-sm-4 text-secondary fw-normal">Phone</dt><dd class="col-sm-8"><a href="tel:{{ $delivery->phone }}">{{ $delivery->phone }}</a></dd>
-                <dt class="col-sm-4 text-secondary fw-normal">Address</dt><dd class="col-sm-8" style="white-space: pre-line">{{ $delivery->address }}</dd>
-                <dt class="col-sm-4 text-secondary fw-normal">Scheduled</dt><dd class="col-sm-8">{{ $delivery->scheduled_date->format('l, j M Y') }}@if ($delivery->time_slot) · {{ $delivery->time_slot }}@endif</dd>
-                <dt class="col-sm-4 text-secondary fw-normal">Driver</dt>
-                <dd class="col-sm-8">
+            <dl class="fw-grid small mb-0">
+                <dt class="fw-span-sm-4 text-secondary fw-normal">Phone</dt><dd class="fw-span-sm-8"><a href="tel:{{ $delivery->phone }}">{{ $delivery->phone }}</a></dd>
+                <dt class="fw-span-sm-4 text-secondary fw-normal">Address</dt><dd class="fw-span-sm-8" style="white-space: pre-line">{{ $delivery->address }}</dd>
+                <dt class="fw-span-sm-4 text-secondary fw-normal">Scheduled</dt><dd class="fw-span-sm-8">{{ $delivery->scheduled_date->format('l, j M Y') }}@if ($delivery->time_slot) · {{ $delivery->time_slot }}@endif</dd>
+                <dt class="fw-span-sm-4 text-secondary fw-normal">Driver</dt>
+                <dd class="fw-span-sm-8">
                     {{ $delivery->driver_name ?? 'Not assigned' }}
                     @if ($delivery->driver_phone) · <a href="tel:{{ $delivery->driver_phone }}">{{ $delivery->driver_phone }}</a>@endif
                     @if ($delivery->driver) <span class="text-secondary">({{ $delivery->driver->employee_code }})</span>@endif
                 </dd>
-                <dt class="col-sm-4 text-secondary fw-normal">Vehicle</dt><dd class="col-sm-8">{{ $delivery->vehicle_no ?? '—' }}</dd>
+                <dt class="fw-span-sm-4 text-secondary fw-normal">Vehicle</dt><dd class="fw-span-sm-8">{{ $delivery->vehicle_no ?? '—' }}</dd>
                 @if ($delivery->sale)
-                    <dt class="col-sm-4 text-secondary fw-normal">Invoice</dt>
-                    <dd class="col-sm-8">
+                    <dt class="fw-span-sm-4 text-secondary fw-normal">Invoice</dt>
+                    <dd class="fw-span-sm-8">
                         @can('view', $delivery->sale)
                             <a href="{{ route('sales.show', $delivery->sale_id) }}">{{ $delivery->sale->invoice_no }}</a>
                         @else
@@ -51,13 +51,13 @@
                     </dd>
                 @endif
                 @if ($delivery->customer)
-                    <dt class="col-sm-4 text-secondary fw-normal">Customer</dt><dd class="col-sm-8">{{ $delivery->customer->name }} ({{ $delivery->customer->code }})</dd>
+                    <dt class="fw-span-sm-4 text-secondary fw-normal">Customer</dt><dd class="fw-span-sm-8">{{ $delivery->customer->name }} ({{ $delivery->customer->code }})</dd>
                 @endif
                 @if ($delivery->notes)
-                    <dt class="col-sm-4 text-secondary fw-normal">Instructions</dt><dd class="col-sm-8" style="white-space: pre-line">{{ $delivery->notes }}</dd>
+                    <dt class="fw-span-sm-4 text-secondary fw-normal">Instructions</dt><dd class="fw-span-sm-8" style="white-space: pre-line">{{ $delivery->notes }}</dd>
                 @endif
                 @if ($delivery->failure_reason)
-                    <dt class="col-sm-4 text-secondary fw-normal">{{ $delivery->status->value === 'cancelled' ? 'Cancel reason' : 'Last failure' }}</dt><dd class="col-sm-8 text-danger">{{ $delivery->failure_reason }}</dd>
+                    <dt class="fw-span-sm-4 text-secondary fw-normal">{{ $delivery->status->value === 'cancelled' ? 'Cancel reason' : 'Last failure' }}</dt><dd class="fw-span-sm-8 text-danger">{{ $delivery->failure_reason }}</dd>
                 @endif
             </dl>
 
@@ -65,9 +65,9 @@
         </section>
     </div>
 
-    <div class="col-lg-5">
+    <div class="fw-span-lg-5">
         <section class="fw-card p-3 p-md-4">
-            <h2 class="fw-card-title mb-3">Progress</h2>
+            <h2 class="fw-card-title">Progress</h2>
             @php
                 $steps = [
                     ['Scheduled', $delivery->created_at, 'by '.($delivery->creator?->name ?? '—')],

@@ -9,9 +9,9 @@
 @endsection
 
 @section('content')
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-4"><input type="search" name="q" value="{{ request('q') }}" class="form-control" placeholder="Search name or email"></div>
-        <div class="col-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Search</button></div>
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-4"><input type="search" name="q" value="{{ request('q') }}" class="form-control" placeholder="Search name or email"></div>
+        <div class="fw-span-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Search</button></div>
     </form>
 
     <div class="table-responsive">

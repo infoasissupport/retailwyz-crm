@@ -5,11 +5,11 @@
         : collect();
 @endphp
 
-<form method="GET" class="row g-2 mb-3">
-    <div class="col-md-3"><input type="date" name="from" value="{{ \Illuminate\Support\Carbon::parse($from)->toDateString() }}" class="form-control" aria-label="From"></div>
-    <div class="col-md-3"><input type="date" name="to" value="{{ \Illuminate\Support\Carbon::parse($to)->toDateString() }}" class="form-control" aria-label="To"></div>
+<form method="GET" class="fw-grid gap-2">
+    <div class="fw-span-md-3"><input type="date" name="from" value="{{ \Illuminate\Support\Carbon::parse($from)->toDateString() }}" class="form-control" aria-label="From"></div>
+    <div class="fw-span-md-3"><input type="date" name="to" value="{{ \Illuminate\Support\Carbon::parse($to)->toDateString() }}" class="form-control" aria-label="To"></div>
     @if ($branchOptions->isNotEmpty())
-        <div class="col-md-3">
+        <div class="fw-span-md-3">
             <select name="branch_id" class="form-select" aria-label="Branch">
                 <option value="">All branches</option>
                 @foreach ($branchOptions as $id => $name)
@@ -18,5 +18,5 @@
             </select>
         </div>
     @endif
-    <div class="col-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Apply</button></div>
+    <div class="fw-span-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Apply</button></div>
 </form>

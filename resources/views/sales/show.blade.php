@@ -20,14 +20,14 @@
 @endsection
 
 @section('content')
-    <dl class="row">
-        <dt class="col-sm-2">Customer</dt><dd class="col-sm-4">{{ $sale->customer?->name ?? 'Walk-in' }}</dd>
-        <dt class="col-sm-2">Branch</dt><dd class="col-sm-4">{{ $sale->branch->name }}</dd>
-        <dt class="col-sm-2">Date</dt><dd class="col-sm-4">{{ $sale->sale_date->format('d-m-Y') }}</dd>
-        <dt class="col-sm-2">Status</dt><dd class="col-sm-4">{{ $sale->status->label() }}</dd>
-        <dt class="col-sm-2">Payment</dt><dd class="col-sm-4">{{ $sale->payment_status->label() }}</dd>
-        <dt class="col-sm-2">Prices</dt><dd class="col-sm-4">{{ $sale->prices_include_tax ? 'Tax inclusive' : 'Tax exclusive' }}</dd>
-        <dt class="col-sm-2">Created by</dt><dd class="col-sm-4">{{ $sale->creator?->name }}</dd>
+    <dl class="fw-grid">
+        <dt class="fw-span-sm-2">Customer</dt><dd class="fw-span-sm-4">{{ $sale->customer?->name ?? 'Walk-in' }}</dd>
+        <dt class="fw-span-sm-2">Branch</dt><dd class="fw-span-sm-4">{{ $sale->branch->name }}</dd>
+        <dt class="fw-span-sm-2">Date</dt><dd class="fw-span-sm-4">{{ $sale->sale_date->format('d-m-Y') }}</dd>
+        <dt class="fw-span-sm-2">Status</dt><dd class="fw-span-sm-4">{{ $sale->status->label() }}</dd>
+        <dt class="fw-span-sm-2">Payment</dt><dd class="fw-span-sm-4">{{ $sale->payment_status->label() }}</dd>
+        <dt class="fw-span-sm-2">Prices</dt><dd class="fw-span-sm-4">{{ $sale->prices_include_tax ? 'Tax inclusive' : 'Tax exclusive' }}</dd>
+        <dt class="fw-span-sm-2">Created by</dt><dd class="fw-span-sm-4">{{ $sale->creator?->name }}</dd>
     </dl>
 
     <h2 class="h6">Items</h2>
@@ -64,8 +64,8 @@
         </table>
     </div>
 
-    <div class="row g-4">
-        <div class="col-lg-6">
+    <div class="fw-grid gap-4">
+        <div class="fw-span-lg-6">
             <h2 class="h6">Payments</h2>
             <table class="table table-sm">
                 <thead><tr><th>No.</th><th>Date</th><th>Method</th><th>Type</th><th class="text-end">Amount</th></tr></thead>
@@ -86,32 +86,32 @@
 
             @if ($sale->status === \App\Enums\SaleStatus::Completed)
                 @can('recordPayment', $sale)
-                    <form method="POST" action="{{ route('sales.payments.store', $sale) }}" class="row g-2">
+                    <form method="POST" action="{{ route('sales.payments.store', $sale) }}" class="fw-grid gap-2">
                         @csrf
-                        <div class="col-md-3"><input type="number" step="0.01" min="0.01" name="amount" class="form-control form-control-sm" placeholder="Amount" required></div>
-                        <div class="col-md-3">
+                        <div class="fw-span-md-3"><input type="number" step="0.01" min="0.01" name="amount" class="form-control form-control-sm" placeholder="Amount" required></div>
+                        <div class="fw-span-md-3">
                             <select name="method" class="form-select form-select-sm" required>
                                 @foreach ($paymentMethods as $value => $label)
                                     <option value="{{ $value }}">{{ $label }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-3"><input type="date" name="paid_on" value="{{ now()->toDateString() }}" class="form-control form-control-sm" required></div>
-                        <div class="col-md-3"><input type="text" name="reference" class="form-control form-control-sm" placeholder="Reference"></div>
+                        <div class="fw-span-md-3"><input type="date" name="paid_on" value="{{ now()->toDateString() }}" class="form-control form-control-sm" required></div>
+                        <div class="fw-span-md-3"><input type="text" name="reference" class="form-control form-control-sm" placeholder="Reference"></div>
                         @can('refund', $sale)
-                            <div class="col-12 form-check ms-2">
+                            <div class="fw-span-12 form-check ms-2">
                                 <input type="hidden" name="refund" value="0">
                                 <input type="checkbox" name="refund" value="1" id="sale_refund" class="form-check-input">
                                 <label for="sale_refund" class="form-check-label">This is a refund paid to the customer</label>
                             </div>
                         @endcan
-                        <div class="col-12"><button type="submit" class="btn btn-sm btn-primary">Record payment</button></div>
+                        <div class="fw-span-12"><button type="submit" class="btn btn-sm btn-primary">Record payment</button></div>
                     </form>
                 @endcan
             @endif
         </div>
 
-        <div class="col-lg-6">
+        <div class="fw-span-lg-6">
             <h2 class="h6">Returns</h2>
             <table class="table table-sm">
                 <thead><tr><th>Reference</th><th>Date</th><th>Reason</th><th class="text-end">Total</th></tr></thead>
@@ -148,17 +148,17 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="row g-2">
-                            <div class="col-md-4"><input type="date" name="return_date" value="{{ now()->toDateString() }}" class="form-control form-control-sm" required></div>
-                            <div class="col-md-8"><input type="text" name="reason" class="form-control form-control-sm" placeholder="Reason" maxlength="255"></div>
-                            <div class="col-12 form-check ms-2">
+                        <div class="fw-grid gap-2">
+                            <div class="fw-span-md-4"><input type="date" name="return_date" value="{{ now()->toDateString() }}" class="form-control form-control-sm" required></div>
+                            <div class="fw-span-md-8"><input type="text" name="reason" class="form-control form-control-sm" placeholder="Reason" maxlength="255"></div>
+                            <div class="fw-span-12 form-check ms-2">
                                 <input type="hidden" name="restock" value="0">
                                 <input type="checkbox" name="restock" value="1" id="restock" class="form-check-input" checked>
                                 <label for="restock" class="form-check-label">Return items to stock</label>
                             </div>
                             @can('refund', $sale)
-                                <div class="col-md-6"><input type="number" step="0.01" min="0" name="refund[amount]" class="form-control form-control-sm" placeholder="Refund now (optional)"></div>
-                                <div class="col-md-6">
+                                <div class="fw-span-md-6"><input type="number" step="0.01" min="0" name="refund[amount]" class="form-control form-control-sm" placeholder="Refund now (optional)"></div>
+                                <div class="fw-span-md-6">
                                     <select name="refund[method]" class="form-select form-select-sm">
                                         <option value="">Refund method</option>
                                         @foreach ($paymentMethods as $value => $label)
@@ -167,7 +167,7 @@
                                     </select>
                                 </div>
                             @endcan
-                            <div class="col-12"><button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Record this return?">Record return</button></div>
+                            <div class="fw-span-12"><button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Record this return?">Record return</button></div>
                         </div>
                     </form>
                 @endcan

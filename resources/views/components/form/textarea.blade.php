@@ -5,7 +5,7 @@
     $key = str_replace(['[', ']'], ['.', ''], $name);
 @endphp
 
-<div class="mb-3">
+<div>
     @if ($label)
         <label for="{{ $id }}" class="form-label">{{ $label }}</label>
     @endif

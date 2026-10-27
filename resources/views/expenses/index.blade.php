@@ -10,8 +10,8 @@
 @endsection
 
 @section('content')
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-3">
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-3">
             <select name="expense_category_id" class="form-select">
                 <option value="">All categories</option>
                 @foreach ($categories as $id => $name)
@@ -20,7 +20,7 @@
             </select>
         </div>
         @if ($branches->isNotEmpty())
-            <div class="col-md-2">
+            <div class="fw-span-md-2">
                 <select name="branch_id" class="form-select">
                     <option value="">All branches</option>
                     @foreach ($branches as $id => $name)
@@ -29,9 +29,9 @@
                 </select>
             </div>
         @endif
-        <div class="col-md-2"><input type="date" name="from" value="{{ request('from') }}" class="form-control" aria-label="From"></div>
-        <div class="col-md-2"><input type="date" name="to" value="{{ request('to') }}" class="form-control" aria-label="To"></div>
-        <div class="col-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
+        <div class="fw-span-md-2"><input type="date" name="from" value="{{ request('from') }}" class="form-control" aria-label="From"></div>
+        <div class="fw-span-md-2"><input type="date" name="to" value="{{ request('to') }}" class="form-control" aria-label="To"></div>
+        <div class="fw-span-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
     </form>
 
     <p>Total: <strong>{{ money($total) }}</strong></p>

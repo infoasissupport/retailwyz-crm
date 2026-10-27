@@ -4,10 +4,10 @@
 
 @section('content')
     {{-- Returns are recorded from the sale's page (sales.show). --}}
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-2"><input type="date" name="from" value="{{ request('from') }}" class="form-control" aria-label="From"></div>
-        <div class="col-md-2"><input type="date" name="to" value="{{ request('to') }}" class="form-control" aria-label="To"></div>
-        <div class="col-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
+    <form method="GET" class="fw-grid gap-2">
+        <div class="fw-span-md-2"><input type="date" name="from" value="{{ request('from') }}" class="form-control" aria-label="From"></div>
+        <div class="fw-span-md-2"><input type="date" name="to" value="{{ request('to') }}" class="form-control" aria-label="To"></div>
+        <div class="fw-span-md-2"><button type="submit" class="btn btn-outline-secondary w-100">Filter</button></div>
     </form>
 
     <div class="table-responsive">

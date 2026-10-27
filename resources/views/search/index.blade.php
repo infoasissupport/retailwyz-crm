@@ -9,9 +9,9 @@
     @elseif (empty($results))
         <div class="fw-card p-5 text-center text-secondary">Nothing matches “{{ $q }}”.</div>
     @else
-        <div class="row g-3">
+        <div class="fw-grid gap-3">
             @foreach ($results as $group => $items)
-                <div class="col-lg-6">
+                <div class="fw-span-lg-6">
                     <section class="fw-card fw-panel h-100">
                         <h2 class="fw-panel-title">{{ $group }} <span class="text-secondary fw-normal small">{{ $items->count() }}</span></h2>
                         <ul class="list-unstyled mb-0">
