@@ -5,7 +5,7 @@
 @section('content')
     @include('reports.partials.period-filter')
 
-    <table class="table table-sm" style="max-width: 560px">
+    <table class="table table-sm fw-maxw-560">
         <tbody>
             <tr><td>Sales (net of tax)</td><td class="text-end">{{ money($report['sales_revenue']) }}</td></tr>
             <tr><td>Less: sales returns</td><td class="text-end">{{ money($report['returns_revenue']) }}</td></tr>

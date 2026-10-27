@@ -63,11 +63,11 @@
             <section class="fw-card p-3">
                 @if ($lead->requirement)
                     <h2 class="fw-card-title mb-1">Requirement</h2>
-                    <p class="small" style="white-space: pre-line">{{ $lead->requirement }}</p>
+                    <p class="small fw-pre-line">{{ $lead->requirement }}</p>
                 @endif
                 @if ($lead->notes)
                     <h2 class="fw-card-title mb-1">Notes</h2>
-                    <p class="small mb-0" style="white-space: pre-line">{{ $lead->notes }}</p>
+                    <p class="small mb-0 fw-pre-line">{{ $lead->notes }}</p>
                 @endif
             </section>
         @endif

@@ -19,7 +19,7 @@
 
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <form method="GET" class="d-flex gap-2">
-            <input type="month" name="month" value="{{ $month->format('Y-m') }}" class="form-control form-control-sm" style="width: auto" onchange="this.form.submit()">
+            <input type="month" name="month" value="{{ $month->format('Y-m') }}" class="form-control form-control-sm fw-w-auto" onchange="this.form.submit()">
         </form>
         <p class="small text-secondary mb-0">Achievement counts completed sales billed by the employee’s linked login, net of returns.</p>
     </div>
@@ -38,7 +38,7 @@
                         <th>Employee</th>
                         <th class="text-end">Target</th>
                         <th class="text-end">Achieved</th>
-                        <th style="min-width: 160px">Progress</th>
+                        <th class="fw-minw-160">Progress</th>
                         <th>Incentive rule</th>
                         <th class="text-end">Earned</th>
                         <th></th>
@@ -58,7 +58,7 @@
                             <td class="text-end fw-num">{{ money($target->target_amount) }}</td>
                             <td class="text-end fw-num">{{ money($achieved[$target->id]) }}</td>
                             <td>
-                                <div @class(['fw-meter mb-0']) aria-hidden="true"><span style="width: {{ min(100, $pct) }}%"></span></div>
+                                <div @class(['fw-meter mb-0']) aria-hidden="true"><span class="fw-pct-{{ (int) round(max(0, min(100, $pct)) / 5) * 5 }}"></span></div>
                                 <span class="small">{{ $pct }}%</span>
                                 @if ($met)<span class="fw-status is-good ms-1"><span aria-hidden="true">✓</span> Met</span>@endif
                             </td>
@@ -102,7 +102,7 @@
 
     @can('targets.manage')
         @if ($employees->isNotEmpty())
-            <section class="fw-card p-3" style="max-width: 960px">
+            <section class="fw-card p-3 fw-maxw-960">
                 <h2 class="fw-card-title">Set a target for {{ $month->format('F Y') }}</h2>
                 <form method="POST" action="{{ route('staff.targets.store') }}">
                     @csrf

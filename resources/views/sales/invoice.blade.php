@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Invoice {{ $sale->invoice_no }}</title>
     @vite(['resources/css/app.css'])
-    <style>@media print { .no-print { display: none !important; } }</style>
 </head>
 <body class="bg-white">
-    <main class="container py-4" style="max-width: 900px">
+    <main class="container py-4 fw-maxw-900">
         <div class="d-flex justify-content-between mb-4">
             <div>
                 <h1 class="h4 mb-1">{{ $settings->get('business_name') }}</h1>

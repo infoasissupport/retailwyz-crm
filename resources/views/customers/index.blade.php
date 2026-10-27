@@ -4,13 +4,13 @@
 
 @section('content')
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-        <form method="GET" class="d-flex flex-wrap gap-2 flex-grow-1" style="max-width: 560px">
+        <form method="GET" class="d-flex flex-wrap gap-2 flex-grow-1 fw-maxw-560">
             <label class="fw-search flex-grow-1">
                 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
                 <span class="visually-hidden">Search customers</span>
                 <input type="search" name="q" value="{{ request('q') }}" placeholder="Search customers..." class="form-control">
             </label>
-            <select name="status" class="form-select" style="width: auto" onchange="this.form.submit()" aria-label="Status">
+            <select name="status" class="form-select fw-w-auto" onchange="this.form.submit()" aria-label="Status">
                 <option value="">All</option>
                 <option value="active" @selected(request('status') === 'active')>Active</option>
                 <option value="inactive" @selected(request('status') === 'inactive')>Inactive</option>

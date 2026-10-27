@@ -3,7 +3,7 @@
 @section('title', 'Edit lead')
 
 @section('content')
-    <form method="POST" action="{{ route('leads.update', $lead) }}" style="max-width: 960px">
+    <form method="POST" action="{{ route('leads.update', $lead) }}" class="fw-maxw-960">
         @csrf
         @method('PUT')
         @include('leads.partials.form')

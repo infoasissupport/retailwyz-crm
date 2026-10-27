@@ -3,7 +3,7 @@
 @section('title', 'Reports')
 
 @section('content')
-    <div class="list-group" style="max-width: 480px">
+    <div class="list-group fw-maxw-480">
         <a href="{{ route('reports.sales') }}" class="list-group-item list-group-item-action">Sales report</a>
         <a href="{{ route('reports.purchases') }}" class="list-group-item list-group-item-action">Purchase report</a>
         <a href="{{ route('reports.stock') }}" class="list-group-item list-group-item-action">Stock &amp; valuation</a>

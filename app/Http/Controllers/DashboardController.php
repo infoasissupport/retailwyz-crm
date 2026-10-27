@@ -92,12 +92,6 @@ class DashboardController extends Controller
                     ->limit(5)
                     ->get();
             }
-            if ($user->can('inventory.view')) {
-                $view['lowStock'] = $this->reports->lowStock($branchId ?? ($user->canAccessAllBranches() ? null : 0))
-                    ->sortBy(fn ($row) => (float) $row->quantity - (float) $row->min_stock)
-                    ->take(5)
-                    ->values();
-            }
         }
 
         return view('dashboard.index', $view);

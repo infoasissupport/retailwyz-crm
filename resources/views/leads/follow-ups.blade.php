@@ -71,7 +71,7 @@
                                 </div>
                             </td>
                             <td class="small">{{ $followUp->type->label() }}</td>
-                            <td class="small text-wrap" style="min-width: 200px; max-width: 320px">
+                            <td class="small text-wrap fw-minw-200 fw-maxw-320">
                                 {{ $followUp->status === 'done' ? $followUp->outcome : $followUp->notes }}
                             </td>
                             <td class="small">{{ $followUp->assignee?->name ?? '—' }}</td>

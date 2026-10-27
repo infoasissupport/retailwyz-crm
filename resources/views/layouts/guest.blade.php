@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-light">
-    <main class="container py-5" style="max-width: 420px">
+    <main class="container py-5 fw-maxw-420">
         @include('layouts.alerts')
         @yield('content')
     </main>

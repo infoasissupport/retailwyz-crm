@@ -5,7 +5,7 @@
 @section('content')
     @include('reports.partials.period-filter')
 
-    <dl class="fw-grid mb-4" style="max-width: 520px">
+    <dl class="fw-grid mb-4 fw-maxw-520">
         <dt class="fw-span-7">Invoices</dt><dd class="fw-span-5 text-end">{{ $totals['invoices'] }}</dd>
         <dt class="fw-span-7">Gross (before discount)</dt><dd class="fw-span-5 text-end">{{ money($totals['gross']) }}</dd>
         <dt class="fw-span-7">Discounts</dt><dd class="fw-span-5 text-end">{{ money($totals['discounts']) }}</dd>

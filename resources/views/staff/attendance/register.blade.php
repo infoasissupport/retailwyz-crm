@@ -4,9 +4,9 @@
 
 @section('content')
     <form method="GET" class="d-flex flex-wrap align-items-center gap-2">
-        <input type="month" name="month" value="{{ $month->format('Y-m') }}" max="{{ now()->format('Y-m') }}" class="form-control form-control-sm" style="width: auto">
+        <input type="month" name="month" value="{{ $month->format('Y-m') }}" max="{{ now()->format('Y-m') }}" class="form-control form-control-sm fw-w-auto">
         @if (auth()->user()->canAccessAllBranches())
-            <select name="branch_id" class="form-select form-select-sm" style="width: auto">
+            <select name="branch_id" class="form-select form-select-sm fw-w-auto">
                 @foreach (App\Models\Branch::active()->orderBy('name')->pluck('name', 'id') as $id => $name)
                     <option value="{{ $id }}" @selected($branchId == $id)>{{ $name }}</option>
                 @endforeach

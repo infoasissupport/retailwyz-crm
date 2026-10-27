@@ -3,7 +3,7 @@
 @section('title', 'Edit employee')
 
 @section('content')
-    <form method="POST" action="{{ route('staff.employees.update', $employee) }}" style="max-width: 960px">
+    <form method="POST" action="{{ route('staff.employees.update', $employee) }}" class="fw-maxw-960">
         @csrf
         @method('PUT')
         @include('staff.employees.partials.form')

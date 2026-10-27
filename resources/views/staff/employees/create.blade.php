@@ -3,7 +3,7 @@
 @section('title', 'Add employee')
 
 @section('content')
-    <form method="POST" action="{{ route('staff.employees.store') }}" style="max-width: 960px">
+    <form method="POST" action="{{ route('staff.employees.store') }}" class="fw-maxw-960">
         @csrf
         @include('staff.employees.partials.form')
 

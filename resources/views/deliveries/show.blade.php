@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<div class="fw-grid gap-3" style="max-width: 1100px">
+<div class="fw-grid gap-3 fw-maxw-1100">
     <div class="fw-span-lg-7">
         <section class="fw-card p-3 p-md-4">
             <div class="d-flex flex-wrap justify-content-between align-items-start gap-2">
@@ -31,7 +31,7 @@
 
             <dl class="fw-grid small mb-0">
                 <dt class="fw-span-sm-4 text-secondary fw-normal">Phone</dt><dd class="fw-span-sm-8"><a href="tel:{{ $delivery->phone }}">{{ $delivery->phone }}</a></dd>
-                <dt class="fw-span-sm-4 text-secondary fw-normal">Address</dt><dd class="fw-span-sm-8" style="white-space: pre-line">{{ $delivery->address }}</dd>
+                <dt class="fw-span-sm-4 text-secondary fw-normal">Address</dt><dd class="fw-span-sm-8 fw-pre-line">{{ $delivery->address }}</dd>
                 <dt class="fw-span-sm-4 text-secondary fw-normal">Scheduled</dt><dd class="fw-span-sm-8">{{ $delivery->scheduled_date->format('l, j M Y') }}@if ($delivery->time_slot) · {{ $delivery->time_slot }}@endif</dd>
                 <dt class="fw-span-sm-4 text-secondary fw-normal">Driver</dt>
                 <dd class="fw-span-sm-8">
@@ -54,7 +54,7 @@
                     <dt class="fw-span-sm-4 text-secondary fw-normal">Customer</dt><dd class="fw-span-sm-8">{{ $delivery->customer->name }} ({{ $delivery->customer->code }})</dd>
                 @endif
                 @if ($delivery->notes)
-                    <dt class="fw-span-sm-4 text-secondary fw-normal">Instructions</dt><dd class="fw-span-sm-8" style="white-space: pre-line">{{ $delivery->notes }}</dd>
+                    <dt class="fw-span-sm-4 text-secondary fw-normal">Instructions</dt><dd class="fw-span-sm-8 fw-pre-line">{{ $delivery->notes }}</dd>
                 @endif
                 @if ($delivery->failure_reason)
                     <dt class="fw-span-sm-4 text-secondary fw-normal">{{ $delivery->status->value === 'cancelled' ? 'Cancel reason' : 'Last failure' }}</dt><dd class="fw-span-sm-8 text-danger">{{ $delivery->failure_reason }}</dd>

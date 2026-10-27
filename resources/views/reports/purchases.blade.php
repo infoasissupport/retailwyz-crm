@@ -5,7 +5,7 @@
 @section('content')
     @include('reports.partials.period-filter')
 
-    <dl class="fw-grid mb-4" style="max-width: 520px">
+    <dl class="fw-grid mb-4 fw-maxw-520">
         <dt class="fw-span-7">Purchase orders</dt><dd class="fw-span-5 text-end">{{ $totals['orders'] }}</dd>
         <dt class="fw-span-7">Gross (before discount)</dt><dd class="fw-span-5 text-end">{{ money($totals['gross']) }}</dd>
         <dt class="fw-span-7">Discounts</dt><dd class="fw-span-5 text-end">{{ money($totals['discounts']) }}</dd>
@@ -18,7 +18,7 @@
     </dl>
 
     <h2 class="h6">By supplier</h2>
-    <table class="table table-sm" style="max-width: 720px">
+    <table class="table table-sm fw-maxw-720">
         <thead><tr><th>Supplier</th><th class="text-end">Orders</th><th class="text-end">Total</th><th class="text-end">Paid</th></tr></thead>
         <tbody>
             @forelse ($bySupplier as $row)

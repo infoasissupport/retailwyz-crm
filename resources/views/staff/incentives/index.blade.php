@@ -84,7 +84,7 @@
                                     @can('pay', $incentive)
                                         <details class="fw-complete d-inline-block text-start">
                                             <summary class="btn btn-sm btn-primary">Pay</summary>
-                                            <form method="POST" action="{{ route('staff.incentives.pay', $incentive) }}" class="mt-2 p-3 border rounded bg-light" style="min-width: 260px">
+                                            <form method="POST" action="{{ route('staff.incentives.pay', $incentive) }}" class="mt-2 p-3 border rounded bg-light fw-minw-260">
                                                 @csrf
                                                 <label class="form-label small mb-1" for="pm-{{ $incentive->id }}">Method</label>
                                                 <select name="payment_method" id="pm-{{ $incentive->id }}" class="form-select form-select-sm mb-2">
@@ -113,7 +113,7 @@
     <div>{{ $incentives->links() }}</div>
 
     @can('create', App\Models\Incentive::class)
-        <section class="fw-card p-3" style="max-width: 960px">
+        <section class="fw-card p-3 fw-maxw-960">
             <h2 class="fw-card-title">Raise an incentive</h2>
             <form method="POST" action="{{ route('staff.incentives.store') }}" class="fw-grid gap-2 align-items-end">
                 @csrf

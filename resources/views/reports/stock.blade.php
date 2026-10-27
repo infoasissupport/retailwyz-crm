@@ -10,7 +10,7 @@
     @endif
 
     <h2 class="h6">Low stock ({{ $lowStock->count() }})</h2>
-    <table class="table table-sm mb-4" style="max-width: 720px">
+    <table class="table table-sm mb-4 fw-maxw-720">
         <thead><tr><th>SKU</th><th>Product</th><th class="text-end">On hand</th><th class="text-end">Minimum</th></tr></thead>
         <tbody>
             @forelse ($lowStock as $row)

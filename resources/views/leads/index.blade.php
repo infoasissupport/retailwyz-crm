@@ -22,13 +22,13 @@
 @section('content')
     @php
         $sourceIcons = [
-            'walk_in' => ['bi-shop', '#0f766e'],
-            'phone' => ['bi-telephone', '#2563eb'],
-            'whatsapp' => ['bi-whatsapp', '#16a34a'],
-            'website' => ['bi-globe2', '#2563eb'],
-            'social_media' => ['bi-instagram', '#db2777'],
-            'referral' => ['bi-share', '#0d9488'],
-            'other' => ['bi-three-dots', '#64748b'],
+            'walk_in' => 'bi-shop',
+            'phone' => 'bi-telephone',
+            'whatsapp' => 'bi-whatsapp',
+            'website' => 'bi-globe2',
+            'social_media' => 'bi-instagram',
+            'referral' => 'bi-share',
+            'other' => 'bi-three-dots',
         ];
         $avatarTones = ['rose', 'amber', 'green', 'blue', 'violet', 'orange'];
         $initials = fn (?string $name) => collect(preg_split('/\s+/', trim((string) $name)))
@@ -147,7 +147,7 @@
                 </thead>
                 <tbody>
                     @forelse ($leads as $lead)
-                        @php [$srcIcon, $srcColor] = $sourceIcons[$lead->source->value] ?? ['bi-three-dots', '#64748b']; @endphp
+                        @php $srcIcon = $sourceIcons[$lead->source->value] ?? 'bi-three-dots'; @endphp
                         <tr>
                             <td class="fw-lcheck"><input type="checkbox" class="form-check-input" data-lead-check value="{{ $lead->id }}" aria-label="Select {{ $lead->name }}"></td>
                             <td class="text-secondary fw-num">{{ $leads->firstItem() + $loop->index }}</td>
@@ -168,7 +168,7 @@
                             </td>
                             <td>
                                 <span class="fw-lsource">
-                                    <i class="bi {{ $srcIcon }}" style="color: {{ $srcColor }}" aria-hidden="true"></i>
+                                    <i class="bi {{ $srcIcon }} fw-src-{{ $lead->source->value }}" aria-hidden="true"></i>
                                     {{ $lead->source->label() }}
                                 </span>
                             </td>

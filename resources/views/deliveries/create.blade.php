@@ -3,7 +3,7 @@
 @section('title', 'Schedule delivery')
 
 @section('content')
-    <form method="POST" action="{{ route('deliveries.store') }}" style="max-width: 960px">
+    <form method="POST" action="{{ route('deliveries.store') }}" class="fw-maxw-960">
         @csrf
         @include('deliveries.partials.form')
 

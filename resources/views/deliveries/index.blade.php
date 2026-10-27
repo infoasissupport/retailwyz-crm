@@ -43,7 +43,7 @@
         <div class="d-flex flex-wrap gap-2">
             <form method="GET" class="d-flex">
                 @if ($status)<input type="hidden" name="status" value="{{ $status->value }}">@endif
-                <input type="search" name="q" value="{{ request('q') }}" class="form-control form-control-sm" placeholder="Search deliveries" aria-label="Search by number, customer, phone or vehicle" style="min-width: 220px">
+                <input type="search" name="q" value="{{ request('q') }}" class="form-control form-control-sm fw-minw-220" placeholder="Search deliveries" aria-label="Search by number, customer, phone or vehicle">
             </form>
             @can('create', App\Models\Delivery::class)
                 <a href="{{ route('deliveries.create') }}" class="btn fw-btn-accent">
@@ -81,7 +81,7 @@
                         @else
                             <span class="text-danger">No driver assigned</span>
                         @endif
-                        <span class="text-truncate" style="max-width: 360px"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span class="text-truncate fw-maxw-360"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             {{ \Illuminate\Support\Str::limit(str_replace("\n", ', ', $delivery->address), 60) }}</span>
                     </div>
                     @if (in_array($delivery->status->value, ['failed', 'cancelled'], true) && $delivery->failure_reason)

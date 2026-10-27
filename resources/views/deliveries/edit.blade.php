@@ -4,12 +4,12 @@
 
 @section('content')
     @if ($delivery->status->value === 'failed')
-        <div class="alert alert-warning small" style="max-width: 960px">
+        <div class="alert alert-warning small fw-maxw-960">
             Last attempt failed: {{ $delivery->failure_reason }}. Saving puts it back to <strong>Pending</strong> on the new date.
         </div>
     @endif
 
-    <form method="POST" action="{{ route('deliveries.update', $delivery) }}" style="max-width: 960px">
+    <form method="POST" action="{{ route('deliveries.update', $delivery) }}" class="fw-maxw-960">
         @csrf
         @method('PUT')
         @include('deliveries.partials.form')
@@ -19,7 +19,7 @@
     </form>
 
     @can('update', $delivery)
-        <details class="mt-4" style="max-width: 960px">
+        <details class="mt-4 fw-maxw-960">
             <summary class="small text-danger">Cancel this delivery</summary>
             <form method="POST" action="{{ route('deliveries.cancel', $delivery) }}" class="d-flex gap-2 mt-2">
                 @csrf

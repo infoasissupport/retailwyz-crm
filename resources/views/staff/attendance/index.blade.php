@@ -12,12 +12,12 @@
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <form method="GET" class="d-flex flex-wrap align-items-center gap-2">
             <a href="{{ route('staff.attendance.index', ['date' => $date->copy()->subDay()->toDateString(), 'branch_id' => request('branch_id')]) }}" class="btn btn-sm btn-outline-secondary" aria-label="Previous day">‹</a>
-            <input type="date" name="date" value="{{ $date->toDateString() }}" max="{{ today()->toDateString() }}" class="form-control form-control-sm" style="width: auto" onchange="this.form.submit()">
+            <input type="date" name="date" value="{{ $date->toDateString() }}" max="{{ today()->toDateString() }}" class="form-control form-control-sm fw-w-auto" onchange="this.form.submit()">
             @if ($date->lt(today()))
                 <a href="{{ route('staff.attendance.index', ['date' => $date->copy()->addDay()->toDateString(), 'branch_id' => request('branch_id')]) }}" class="btn btn-sm btn-outline-secondary" aria-label="Next day">›</a>
             @endif
             @if (auth()->user()->canAccessAllBranches())
-                <select name="branch_id" class="form-select form-select-sm" style="width: auto" onchange="this.form.submit()">
+                <select name="branch_id" class="form-select form-select-sm fw-w-auto" onchange="this.form.submit()">
                     @foreach (App\Models\Branch::active()->orderBy('name')->pluck('name', 'id') as $id => $name)
                         <option value="{{ $id }}" @selected($branchId == $id)>{{ $name }}</option>
                     @endforeach

@@ -80,8 +80,8 @@
                                 <td>{{ $target->period->format('M Y') }}</td>
                                 <td class="text-end fw-num">{{ money($target->target_amount) }}</td>
                                 <td class="text-end fw-num">{{ money($achieved[$target->id]) }}</td>
-                                <td style="min-width: 140px">
-                                    <div class="fw-meter mb-0"><span style="width: {{ min(100, $pct) }}%"></span></div>
+                                <td class="fw-minw-140">
+                                    <div class="fw-meter mb-0"><span class="fw-pct-{{ (int) round(max(0, min(100, $pct)) / 5) * 5 }}"></span></div>
                                     <span class="small text-secondary">{{ $pct }}%</span>
                                 </td>
                             </tr>

@@ -3,7 +3,7 @@
 @section('title', 'New lead')
 
 @section('content')
-    <form method="POST" action="{{ route('leads.store') }}" style="max-width: 960px">
+    <form method="POST" action="{{ route('leads.store') }}" class="fw-maxw-960">
         @csrf
         @include('leads.partials.form')
 
